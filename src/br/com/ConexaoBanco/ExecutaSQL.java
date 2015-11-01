@@ -10,43 +10,6 @@ public class ExecutaSQL extends ConexaoMySQL {
 	private String tableValue;
 	private String tableSearch;
 	
-	public void insert() {
-		String commands = new String();
-		commands = "INSERT INTO "+this.table+" ("+this.field+") VALUES ("+this.data+")";
-		
-		System.out.println(commands);
-		
-		if(this.executarSQL(commands)) {
-			this.msg = "Registro executado com sucesso.";
-			System.out.println(this.msg);
-		}
-		
-	}
-	
-	public void delete() {
-		String commands = new String();
-		
-		commands = "DELETE FROM "+this.table+" WHERE "+this.tableValue+" = '"+this.tableSearch+"' ";
-		
-		System.out.println(commands);
-		
-		if(this.executarSQL(commands)) {
-			this.msg = "Registro excluido com sucesso.";
-			System.out.println(this.msg);
-		}
-	}
-	
-	public void update() {
-		String commands = new String();
-		
-		commands = "UPDATE "+this.table+" SET "+this.field+" WHERE "+this.tableValue+" = '"+this.tableSearch+"' ";
-		
-		if(this.executarSQL(commands)) {
-			this.msg = "Registro atualizado com sucesso.";
-			System.out.println(this.msg);
-		}
-	}
-	
 	public String getTable() {
 		return table;
 	}
@@ -88,5 +51,42 @@ public class ExecutaSQL extends ConexaoMySQL {
 	}
 	public void setSql(String sql) {
 		this.sql = sql;
+	}
+	
+	public void insert() {
+		String commands = new String();
+		commands = "INSERT INTO "+this.table+" ("+this.field+") VALUES ("+this.data+")";
+		
+		System.out.println(commands);
+		
+		if(this.executarSQL(commands)) {
+			this.msg = "Registro executado com sucesso.";
+			System.out.println(this.msg);
+		}
+		
+	}
+	
+	public void delete() {
+		String commands = new String();
+		
+		commands = "DELETE FROM "+this.table+" WHERE "+this.tableValue+" = '"+this.tableSearch+"' ";
+		
+		System.out.println(commands);
+		
+		if(this.executarSQL(commands)) {
+			this.msg = "Registro excluido com sucesso.";
+			System.out.println(this.msg);
+		}
+	}
+	
+	public void update() {
+		String commands = new String();
+		
+		commands = "UPDATE "+this.table+" SET "+this.field+" WHERE "+this.tableValue+" = '"+this.tableSearch+"' ";
+		
+		if(this.executarSQL(commands)) {
+			this.msg = "Registro atualizado com sucesso.";
+			System.out.println(this.msg);
+		}
 	}
 }
