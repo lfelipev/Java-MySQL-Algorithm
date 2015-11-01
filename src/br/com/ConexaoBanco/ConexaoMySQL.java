@@ -8,18 +8,19 @@ import java.util.List;
 
 public class ConexaoMySQL {
 	
-	public static String status = "Sem conexão!";
-	protected String server;
-	protected String user;
-	protected String password;
-	protected String database;
-	protected String data;
-	protected String query;
-	protected String totalDados;
-	protected String driverName;
-	protected String url;
-	protected Connection connection;
+	public static String status = "Sem conexão!"; //status da conexão (padrão)
+	protected String server; //nome do servidor (localhost)
+	protected String user; //usuario do servidor
+	protected String password; //senha do servidor
+	protected String database; //nome do banco de dados
+	protected String data; //dados (ainda não usei)
+	protected String query; //comando em sql
+	protected String totalDados; //contador de dados
+	protected String driverName; //driver jdbc
+	protected String url; //link jdbc com servidor, senha e database 
+	protected Connection connection; //conexao principal
 	
+	//construtor
 	public ConexaoMySQL() {
 		this.server = "localhost";
 		this.user = "root";
@@ -32,7 +33,6 @@ public class ConexaoMySQL {
 	}
 	
 	void conectar() {
-		
 		try {
 			Class.forName(driverName);
 			
@@ -40,40 +40,55 @@ public class ConexaoMySQL {
 			
 			if(this.connection != null) {
 				status = ("Conexão realizada com sucesso!");
-			} else {
-				status = ("Não foi possível realizar conexão!");
-			}
+			} 
 			
-		} catch (ClassNotFoundException e) {
+			else {
+				status = ("Não foi possível realizar conexão!");
+			}	
+		} 
+		
+		catch (ClassNotFoundException e) {
 			System.out.println("O driver expecificado não foi encontrado.");
-		} catch (SQLException e) {
+		} 
+		
+		catch (SQLException e) {
 			System.out.println("Não foi possível conectar ao banco de dados.");
 		}
 	}
 	
+	
+	//função para executar comandos SQL no banco de dados
 	boolean executarSQL(List<String> sql) {
+		
+		boolean conexao;
 		
 		try {
 			Statement stmt = this.connection.createStatement();
-			
+			//enquanto existir comandos
 			for(String command : sql) {
 				stmt.addBatch(command);
 			}
-			
+			//execute os comandos
 			stmt.executeBatch();
 			stmt.close();
 			
-			return true;
-			
-		} catch (Exception e) {
+			conexao = true;
+		} 
+		
+		catch (Exception e) {
+			conexao = false;
 			e.printStackTrace();
-		} finally {
+		} 
+		
+		finally {
 			try {
 				this.connection.close();
-			} catch (SQLException e) {
+			} 
+			
+			catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		return true;
+		return conexao;
 	}
 }

@@ -21,6 +21,7 @@ public class ExecutaSQL extends ConexaoMySQL {
 		
 		if(this.executarSQL(commands)) {
 			this.msg = "Registro executado com sucesso.";
+			System.out.println(this.msg);
 		}
 		
 	}
