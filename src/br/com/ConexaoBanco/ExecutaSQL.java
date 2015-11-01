@@ -5,11 +5,11 @@ import java.util.List;
 
 public class ExecutaSQL extends ConexaoMySQL {
 
-	private String sql;
-	private String table;
-	private String field;
-	private String data;
-	private String msg;
+	private String sql; //comando SQL
+	private String table; //tabela do DB
+	private String field; //campos na tabela
+	private String data; //dados na tabela
+	private String msg; //mensagem de erro/sucesso
 	private String tableValue;
 	private String tableSearch;
 	
