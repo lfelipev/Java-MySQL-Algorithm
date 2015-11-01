@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 public class ConexaoMySQL {
 	
@@ -58,16 +57,15 @@ public class ConexaoMySQL {
 	
 	
 	//função para executar comandos SQL no banco de dados
-	boolean executarSQL(List<String> sql) {
+	boolean executarSQL(String sql) {
 		
 		boolean conexao;
 		
 		try {
 			Statement stmt = this.connection.createStatement();
-			//enquanto existir comandos
-			for(String command : sql) {
-				stmt.addBatch(command);
-			}
+			
+			stmt.addBatch(sql);
+			
 			//execute os comandos
 			stmt.executeBatch();
 			stmt.close();

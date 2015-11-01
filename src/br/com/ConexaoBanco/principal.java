@@ -11,16 +11,27 @@ public class principal {
 		
 		reg.setTable("user");
 		
+		/* passos para inserir */
 		String nome = "Luis";
-		String senha = "123";
+		String senha = "124355555";
 		String email = "feligma";
 		
-		reg.setField("nome, senha, email");
-		reg.setData("'"+nome+"','"+senha+"','"+email+"'");
-		reg.insert();
+		//reg.setField("nome, senha, email");
+		//reg.setData("'"+nome+"','"+senha+"','"+email+"'");
+		//reg.insert();
 		
-		reg.getMsg();
-
+		/* passos para excluir */
+		//reg.setTableValue("nome");
+		//reg.setTableSearch("Felipe");
+		//reg.delete();
+		
+		/* passos para atualizar */
+		reg.setField("nome = '"+nome+"', senha = '"+senha+"'");
+		reg.setTableValue("senha");
+		reg.setTableSearch("1243");
+		reg.update();
+		
+		//(UPDATE user SET campos ONDE senha = 1243)
 	}
 
 }
