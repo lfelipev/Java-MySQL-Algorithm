@@ -1,4 +1,4 @@
-# ServerTestJava
+# Java MySQL Algorithm
 
 Algorítimos que fazem conexão com um banco de dados MySQL usando Java.
 
